@@ -10,9 +10,9 @@ import java.util.Optional;
 @RequestMapping({"/stock"})
 public record CategoryController(CategoryService categoryService) {
     @PostMapping({"/category"})
-    public ResponseEntity<String> saveCategory(@RequestBody Category category){
+    public ResponseEntity<Category> saveCategory(@RequestBody Category category){
         categoryService.save(category);
-        return ResponseEntity.ok("Product saved successfully");
+        return ResponseEntity.ok().body(category);
     }
 
     @GetMapping({"/category/{id}"})
